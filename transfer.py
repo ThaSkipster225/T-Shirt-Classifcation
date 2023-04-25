@@ -32,7 +32,7 @@ DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data/Tshirts.csv')
 
 def main():
     # Load dataset
-    pdb.set_trace()
+    # pdb.set_trace()
     data, labels = load(DATAROOT, show=False)
     labels, y = np.unique(labels, return_inverse=True)
 
