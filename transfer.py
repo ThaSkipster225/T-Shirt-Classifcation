@@ -38,12 +38,12 @@ def main():
 
     # TODO: Split data into random shuffled training (75%) and testing (25%) sets
     xtrain, xtest, ytrain, ytest = train_test_split(data, y, train_size=0.75, test_size=0.25)
-    pdb.set_trace()
+    
     # TODO: Preprocess image data to match Xception requirements
     # (see keras.applications.xception.preprocess_input)
-    xtrain = 1
-    xtest = 1
-
+    xtrain = keras.applications.xception.preprocess_input(xtrain)
+    xtest = keras.applications.xception.preprocess_input(xtest)
+    pdb.set_trace()
     # TODO: Load the Xception model from Keras, use weights from "imagenet" and do not
     # include the top (output) layer
     xception = 1  # this is the line to edit
