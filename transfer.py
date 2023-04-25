@@ -43,11 +43,15 @@ def main():
     # (see keras.applications.xception.preprocess_input)
     xtrain = keras.applications.xception.preprocess_input(xtrain)
     xtest = keras.applications.xception.preprocess_input(xtest)
-    pdb.set_trace()
+
     # TODO: Load the Xception model from Keras, use weights from "imagenet" and do not
     # include the top (output) layer
-    xception = 1  # this is the line to edit
+    xception = tf.keras.applications.Xception(
+        include_top=False,
+        weights='imagenet'
+    )  # this is the line to edit
 
+    pdb.set_trace()
     # Change the end of the network to match new dataset (this is what will be learned!)
     avg = keras.layers.GlobalAveragePooling2D()(xception.output)
     output = keras.layers.Dense(len(labels), activation='softmax')(avg)
