@@ -27,12 +27,12 @@ import os
 import pdb
 
 # The data needs to be in a folder called 'Data' in the same directory as the python file for this to work
-DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data')
+DATAROOT = f'{os.path.dirname(__file__)}\Data'
 
 
 def main():
     # Load dataset
-    # pdb.set_trace()
+    pdb.set_trace()
     data, labels = load(DATAROOT, show=False)
     labels, y = np.unique(labels, return_inverse=True)
 
