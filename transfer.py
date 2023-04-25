@@ -26,8 +26,8 @@ import pandas as pd
 import os
 import pdb
 
-
-DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data/Tshirts.csv')  # Should get the current directory where the data is
+# The data needs to be in a folder called 'Data' in the same directory as the python file for this to work
+DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data/Tshirts.csv')
 
 
 def main():
