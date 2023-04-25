@@ -60,7 +60,7 @@ def main():
 
     # TODO: Freeze layers in xception
     for layer in xception.layers:
-        pass
+        layer.trainable = False
 
     # Compile the model
     # TODO: Use the SGD optimizer with learning rate of 0.1 and momentum of 0.9
