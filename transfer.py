@@ -27,7 +27,7 @@ import os
 import pdb
 
 # The data needs to be in a folder called 'Data' in the same directory as the python file for this to work
-DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data/Tshirts.csv')
+DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data')
 
 
 def main():
