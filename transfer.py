@@ -27,25 +27,26 @@ import os
 import pdb
 
 
-DATAROOT = 'C:/Users/meicholtz/Documents/csc4510/data/shirts'  # TODO: edit this path
+DATAROOT = os.path.dirname(f'{os.path.abspath(__file__)}/Data/Tshirts.csv')  # Should get the current directory where the data is
 
 
 def main():
     # Load dataset
+    pdb.set_trace()
     data, labels = load(DATAROOT, show=False)
     labels, y = np.unique(labels, return_inverse=True)
 
     # TODO: Split data into random shuffled training (75%) and testing (25%) sets
-    xtrain, xtest, ytrain, ytest = ?
+    xtrain, xtest, ytrain, ytest = 1,1,1,1
 
     # TODO: Preprocess image data to match Xception requirements
     # (see keras.applications.xception.preprocess_input)
-    xtrain = ?
-    xtest = ?
+    xtrain = 1
+    xtest = 1
 
     # TODO: Load the Xception model from Keras, use weights from "imagenet" and do not
     # include the top (output) layer
-    xception = ?  # this is the line to edit
+    xception = 1  # this is the line to edit
 
     # Change the end of the network to match new dataset (this is what will be learned!)
     avg = keras.layers.GlobalAveragePooling2D()(xception.output)
@@ -59,7 +60,7 @@ def main():
 
     # Compile the model
     # TODO: Use the SGD optimizer with learning rate of 0.1 and momentum of 0.9
-    optimizer = ?
+    optimizer = keras.optimizers.SGD
     model.compile(loss='sparse_categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
@@ -70,7 +71,7 @@ def main():
     earlystopping = keras.callbacks.EarlyStopping(patience=10, restore_best_weights=True)
 
     # TODO: Train the model using the fit method; use a batch size of 5, 100 epochs, the callbacks created above, and the test data for validation
-    history = ?
+    history = 1
 
     # Evaluate the model
     model.evaluate(xtest, ytest)
