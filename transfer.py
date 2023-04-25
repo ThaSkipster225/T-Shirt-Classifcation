@@ -32,13 +32,13 @@ DATAROOT = f'{os.path.dirname(__file__)}\Data'
 
 def main():
     # Load dataset
-    pdb.set_trace()
+    # pdb.set_trace()
     data, labels = load(DATAROOT, show=False)
     labels, y = np.unique(labels, return_inverse=True)
 
     # TODO: Split data into random shuffled training (75%) and testing (25%) sets
-    xtrain, xtest, ytrain, ytest = 1,1,1,1
-
+    xtrain, xtest, ytrain, ytest = train_test_split(data, y, train_size=0.75, test_size=0.25)
+    pdb.set_trace()
     # TODO: Preprocess image data to match Xception requirements
     # (see keras.applications.xception.preprocess_input)
     xtrain = 1
