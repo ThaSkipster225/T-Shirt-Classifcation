@@ -73,9 +73,8 @@ def main():
     # Create callbacks
     filename = os.path.join("transfer.h5")
     checkpoint = keras.callbacks.ModelCheckpoint(filename, save_best_only=True)
-    earlystopping = keras.callbacks.EarlyStopping(patience=10, restore_best_weights=True)
+    earlystopping =  keras.callbacks.EarlyStopping(patience=10, restore_best_weights=True)
 
-    pdb.set_trace()
     # TODO: Train the model using the fit method; use a batch size of 5, 100 epochs, the callbacks created above, and the test data for validation
     history = model.fit(xtrain, ytrain, 
                         batch_size=5, epochs=100, 
@@ -85,11 +84,14 @@ def main():
 
     # Evaluate the model
     model.evaluate(xtest, ytest)
-
+    # pdb.set_trace()
     # TODO: Compute the confusion matrix and show which shirts were misclassified
-    # matrix = confusion_matrix()
-
+    pred = model.predict(xtest)
+    y_classes = keras.np_utils.probas_to_classes(pred)
     pdb.set_trace()
+    matrix = confusion_matrix(ytest, pred)
+
+    
 
 
 def load(directory=DATAROOT, show=False):
