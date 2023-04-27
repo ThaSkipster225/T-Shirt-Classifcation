@@ -87,6 +87,7 @@ def main():
     model.evaluate(xtest, ytest)
 
     # TODO: Compute the confusion matrix and show which shirts were misclassified
+    # matrix = confusion_matrix()
 
     pdb.set_trace()
 
