@@ -51,11 +51,10 @@ def main():
         weights='imagenet'
     )  # this is the line to edit
 
-    pdb.set_trace()
     # Change the end of the network to match new dataset (this is what will be learned!)
     avg = keras.layers.GlobalAveragePooling2D()(xception.output)
     output = keras.layers.Dense(len(labels), activation='softmax')(avg)
-    model = keras.Model() # TODO: Make a new model with the old xception input and the new dense output
+    model = keras.Model(inputs=avg, outputs=output) # TODO: Make a new model with the old xception input and the new dense output
     model.summary()
 
     # TODO: Freeze layers in xception
@@ -64,7 +63,7 @@ def main():
 
     # Compile the model
     # TODO: Use the SGD optimizer with learning rate of 0.1 and momentum of 0.9
-    optimizer = keras.optimizers.SGD
+    optimizer = keras.optimizers.SGD(learning_rate=0.1, momentum = 0.9)
     model.compile(loss='sparse_categorical_crossentropy',
                   optimizer=optimizer,
                   metrics=['accuracy'])
@@ -74,13 +73,15 @@ def main():
     checkpoint = keras.callbacks.ModelCheckpoint(filename, save_best_only=True)
     earlystopping = keras.callbacks.EarlyStopping(patience=10, restore_best_weights=True)
 
+    pdb.set_trace()
     # TODO: Train the model using the fit method; use a batch size of 5, 100 epochs, the callbacks created above, and the test data for validation
-    history = 1
+    # history = model.fit(output, batch_size = 5, epochs = 100, callbacks = [checkpoint, earlystopping], validation_data=(xtest, ytest))
 
     # Evaluate the model
     model.evaluate(xtest, ytest)
 
     # TODO: Compute the confusion matrix and show which shirts were misclassified
+
     pdb.set_trace()
 
 
