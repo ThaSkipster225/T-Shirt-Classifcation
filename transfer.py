@@ -90,6 +90,12 @@ def main():
     y_classes = pred.argmax(axis=-1)
     matrix = confusion_matrix(ytest, y_classes)
 
+    print('==================================')
+    print('+++++++++Confusion Matrix+++++++++')
+    print('==================================')
+    print(matrix)
+    print()
+
     bad = np.where(y_classes != ytest)
 
     plt.figure(2)
