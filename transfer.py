@@ -83,13 +83,14 @@ def main():
                         )
 
     # Evaluate the model
-    model.evaluate(xtest, ytest)
+    scores = model.evaluate(xtest, ytest)
     # pdb.set_trace()
     # TODO: Compute the confusion matrix and show which shirts were misclassified
     pred = model.predict(xtest)
-    y_classes = keras.np_utils.probas_to_classes(pred)
+    y_classes = pred.argmax(axis=-1)
+    matrix = confusion_matrix(ytest, y_classes)
+
     pdb.set_trace()
-    matrix = confusion_matrix(ytest, pred)
 
     
 
