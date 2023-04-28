@@ -84,13 +84,25 @@ def main():
 
     # Evaluate the model
     scores = model.evaluate(xtest, ytest)
-    # pdb.set_trace()
+
     # TODO: Compute the confusion matrix and show which shirts were misclassified
     pred = model.predict(xtest)
     y_classes = pred.argmax(axis=-1)
     matrix = confusion_matrix(ytest, y_classes)
 
-    pdb.set_trace()
+    bad = np.where(y_classes != ytest)
+
+    plt.figure(2)
+    m = montage(data[bad], padding_width=1, multichannel=True)
+    plt.imshow(m)
+    plt.title('Misclassified Images')
+    plt.xticks([])
+    plt.yticks([])
+    plt.show()
+
+    #Debug if necessary
+    # pdb.set_trace()
+    
 
     
 
