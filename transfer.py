@@ -98,13 +98,16 @@ def main():
 
     bad = np.where(y_classes != ytest)
 
-    plt.figure(2)
-    m = montage(data[bad], padding_width=1, multichannel=True)
-    plt.imshow(m)
-    plt.title('Misclassified Images')
-    plt.xticks([])
-    plt.yticks([])
-    plt.show()
+    if (len(bad) > 0):
+        plt.figure(2)
+        m = montage(data[bad], padding_width=1, multichannel=True)
+        plt.imshow(m)
+        plt.title('Misclassified Images')
+        plt.xticks([])
+        plt.yticks([])
+        plt.show()
+    else:
+        print('Perfect classification, there were no misclassified images')
 
     #Debug if necessary
     # pdb.set_trace()
@@ -131,7 +134,7 @@ def load(directory=DATAROOT, show=False):
     # Show montage of images (optional)
     if show:
         plt.figure(1)
-        m = montage(x, fill=np.zeros(3), padding_width=1, multichannel=True)
+        m = montage(x, fill=np.zeros(3), padding_width=1) # Removed multichannel=True, because it was throwing errors
         plt.imshow(m)
         plt.title('Sample Images')
         plt.xticks([])
